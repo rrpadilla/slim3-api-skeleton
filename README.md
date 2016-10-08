@@ -56,4 +56,4 @@ You can integrate any third-party components found on [Packagist](https://packag
 * `app/Helpers/ArrayToXml.php`: Helper class to convert array to xml. Used by XmlApiView class. 
 * `app/Helpers/Negotiation.php`: Helper class to handle Simple Negotiation.
 * `app/Renders/JsonApiView.php`: view wrapper for json responses (with error code). Return "meta" and "data". "meta" contains "error" (true/false) and "status" (HTTP Status code).
-* `app/Renders/XmlApiView.php`: // TODO. View wrapper for xml responses (with error code).
+* `app/Renders/XmlApiView.php`: view wrapper for xml responses (with error code). Return "meta" and "data". "meta" contains "error" (true/false) and "status" (HTTP Status code).
