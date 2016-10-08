@@ -1,0 +1,5 @@
+*
+!.gitignore
+!routes/
+routes/*
+!routes/.gitignore
