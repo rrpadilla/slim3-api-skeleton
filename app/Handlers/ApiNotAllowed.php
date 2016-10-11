@@ -4,7 +4,7 @@ namespace App\Handlers;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use App\Renders\ApiViewInterface;
+use App\Renders\ApiView;
 use Slim\Http\Body;
 
 /**
@@ -16,7 +16,7 @@ class ApiNotAllowed extends ApiAbstractHandler
 {
     protected $textPlain;
 
-    public function __construct(ApiViewInterface $view, $textPlain = false)
+    public function __construct(ApiView $view, $textPlain = false)
     {
         parent::__construct($view);
         $this->textPlain = $textPlain;
@@ -60,6 +60,6 @@ class ApiNotAllowed extends ApiAbstractHandler
             'Allow' => implode(', ', $methods),
         ];
 
-        return $this->view->render($response, $data, $status, $addHeaders);
+        return $this->view->render($request, $response, $data, $status, $addHeaders);
     }
 }

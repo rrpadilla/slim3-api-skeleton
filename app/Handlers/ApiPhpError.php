@@ -44,6 +44,6 @@ final class ApiPhpError extends ApiAbstractError
             } while ($error = $error->getPrevious());
         }
 
-        return $this->view->render($response, $data, 500);
+        return $this->view->render($request, $response, $data, 500);
     }
 }

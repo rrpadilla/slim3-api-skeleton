@@ -10,11 +10,10 @@ $container = $app->getContainer();
 // Api View.
 $container['view'] = function ($c) {
     // Simple Content Negotiation (json and xml).
-    $contentType = \App\Helpers\Negotiation::negotiate($c->get('request'), 'output');
-    if ($contentType === 'application/xml') {
-        return new \App\Renders\XmlApiView();
-    }
-    return new \App\Renders\JsonApiView();
+    $defaultMediaType = 'application/json';
+    $outputParam = 'output';
+    $checkHeader = true;
+    return new \App\Renders\ApiView($defaultMediaType, $outputParam, $checkHeader);
 };
 
 // Database.

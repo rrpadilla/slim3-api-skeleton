@@ -40,7 +40,7 @@ You can integrate any third-party components found on [Packagist](https://packag
 * `logs/`: directory contains your application's log files. Should be writable by your web server.
 * `public/`: directory contains the index.php file, which is the entry point for all requests entering your application.
 * `routes/`: directory contains all of the route definitions for your application. By default, 1 route file is included: `routes.php`.
-* `tests/`: directory contains your automated tests. An example [PHPUnit](https://phpunit.de/) is provided out of the box. Each test class should be suffixed with the word Test. You may run your tests using the phpunit or php vendor/bin/phpunit commands.
+* `tests/`: directory contains your automated tests. An example [PHPUnit](https://phpunit.de/) is provided out of the box. To run tests: `phpunit -- verbose tests/DefaultRoutesTest.php`.
 * `vendor/`: directory contains your [Composer](https://getcomposer.org/) dependencies.
 
 ## Key files
@@ -54,6 +54,6 @@ You can integrate any third-party components found on [Packagist](https://packag
 * `routes/routes.php`: all application routes are here.
 * `app/Controllers/ExampleAction.php`: example Action class.
 * `app/Helpers/ArrayToXml.php`: Helper class to convert array to xml. Used by XmlApiView class. 
-* `app/Helpers/Negotiation.php`: Helper class to handle Simple Negotiation.
+* `app/Renders/ApiView.php`: Render output based on a PSR-7 Request's Accept header.
 * `app/Renders/JsonApiView.php`: view wrapper for json responses (with error code). Return "meta" and "data". "meta" contains "error" (true/false) and "status" (HTTP Status code).
 * `app/Renders/XmlApiView.php`: view wrapper for xml responses (with error code). Return "meta" and "data". "meta" contains "error" (true/false) and "status" (HTTP Status code).

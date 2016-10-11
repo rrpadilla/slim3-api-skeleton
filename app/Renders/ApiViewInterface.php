@@ -18,5 +18,5 @@ interface ApiViewInterface
      * @param  array $addHeaders Associative array of header to be added
      * @return ResponseInterface
      */
-    public function render(ResponseInterface $response, $data = [], $status = 200, $addHeaders = []);
+    public function render(ResponseInterface $response, array $data = [], $status = 200, $addHeaders = []);
 }

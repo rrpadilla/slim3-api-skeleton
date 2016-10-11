@@ -3,13 +3,13 @@
 namespace App\Handlers;
 
 use Slim\Handlers\AbstractHandler;
-use App\Renders\ApiViewInterface;
+use App\Renders\ApiView;
 
 abstract class ApiAbstractHandler extends AbstractHandler
 {
     protected $view;
 
-    public function __construct(ApiViewInterface $view)
+    public function __construct(ApiView $view)
     {
         $this->view = $view;
     }

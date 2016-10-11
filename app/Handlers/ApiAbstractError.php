@@ -3,7 +3,7 @@
 namespace App\Handlers;
 
 use Slim\Handlers\AbstractError;
-use App\Renders\ApiViewInterface;
+use App\Renders\ApiView;
 use Psr\Log\LoggerInterface;
 
 abstract class ApiAbstractError extends AbstractError
@@ -12,11 +12,11 @@ abstract class ApiAbstractError extends AbstractError
     protected $logger;
 
     /**
-     * @param ApiViewInterface $view
+     * @param ApiView $view
      * @param LoggerInterface $logger
      * @param bool $displayErrorDetails
      */
-    public function __construct(ApiViewInterface $view, LoggerInterface $logger, $displayErrorDetails = false)
+    public function __construct(ApiView $view, LoggerInterface $logger, $displayErrorDetails = false)
     {
         parent::__construct($displayErrorDetails);
         $this->view = $view;

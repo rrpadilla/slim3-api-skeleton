@@ -26,6 +26,6 @@ final class ApiNotFound extends ApiAbstractHandler
             'message' => 'Not found',
         ];
 
-        return $this->view->render($response, $data, 404);
+        return $this->view->render($request, $response, $data, 404);
     }
 }

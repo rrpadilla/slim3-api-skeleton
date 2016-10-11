@@ -3,6 +3,7 @@
 namespace App\Renders;
 
 use Psr\Http\Message\ResponseInterface;
+use Slim\Http\Body;
 
 /**
  * JsonApiView - view wrapper for json responses (with error code).
@@ -36,12 +37,12 @@ class JsonApiView implements ApiViewInterface {
      * @param  array $addHeaders Associative array of header to be added
      * @return ResponseInterface
      */
-    public function render(ResponseInterface $response, $data = [], $status = 200, $addHeaders = [])
+    public function render(ResponseInterface $response, array $data = [], $status = 200, $addHeaders = [])
     {
         $status = intval($status);
         $output = [
             'meta' => ['error' => true, 'status' => $status],
-            'data' => [$data],
+            'data' => $data,
         ];
         $output['meta']['error'] = ($status < 400) ? false : true;
 
@@ -52,18 +53,21 @@ class JsonApiView implements ApiViewInterface {
             throw new \RuntimeException(json_last_error_msg(), json_last_error());
         }
 
-        $r = $response->withStatus($status)
-            ->withHeader('Content-Type', 'application/json; charset=UTF-8');
+        $body = new Body(fopen('php://temp', 'r+'));
+        $body->write($json);
+        $newResponse = $response->withBody($body);
+
+        $newResponse = $newResponse->withStatus($status)
+            ->withHeader('Content-Type', 'application/json;charset=utf-8');
 
         if (count($addHeaders)) {
             foreach ($addHeaders as $headerKey => $headerValue) {
                 if (strtolower($headerKey) != 'content-type') {
-                    $r->withHeader($headerKey, $headerValue);
+                    $newResponse->withHeader($headerKey, $headerValue);
                 }
             }
         }
 
-        $r->getBody()->write($json);
-        return $r;
+        return $newResponse;
     }
 }
