@@ -29,6 +29,7 @@ require BASE_PATH . '/config/dependencies.php';
 require BASE_PATH . '/config/middleware.php';
 
 // Register routes.
-require BASE_PATH . '/routes/routes.php';
+require BASE_PATH . '/routes/tests.php';
+//require BASE_PATH . '/routes/routes.php';
 
 return $app;

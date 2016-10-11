@@ -5,7 +5,7 @@ namespace App\Tests;
 class DefaultRoutesTest extends BaseTestCase
 {
     /**
-     * Test that the hello route returns the JSON {"hello": "world" }
+     * Test that the hello route returns the message "Hello".
      */
     public function testGetHello()
     {
