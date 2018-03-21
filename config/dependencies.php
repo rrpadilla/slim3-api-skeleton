@@ -34,9 +34,11 @@ $container['db'] = function($c) {
     try {
         $pdo = new \PDO($dsn, $user, $password);
         $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        // If you want to use a Repository.
         //$apiRepo = new \App\Db\ApiRepository($pdo, $debug);
         //$apiRepo->appRouter = $c->get('router');
         //return $apiRepo;
+        return $pdo;
     } catch (\PDOException $e) {
         throw $e;
     }
